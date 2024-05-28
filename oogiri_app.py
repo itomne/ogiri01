@@ -4,6 +4,12 @@ from io import BytesIO
 import google.generativeai as genai
 
 # gemini api のためのモジュール
+# Google Generative AI（Gemini API）のAPIキー設定
+genai.configure(api_key="GEMINI_API_KEY")
+
+# Geminiモデルの設定
+model = genai.GenerativeModel('gemini-1.5-pro-preview-0409')
+
 # アプリのタイトル
 st.title("大喜利Webアプリ")
 
@@ -11,7 +17,7 @@ st.title("大喜利Webアプリ")
 uploaded_file = st.file_uploader("画像をアップロードしてください", type=["jpg", "jpeg", "png"])
 
 # APIキーの設定
-api_key = st.secrets["api_keys"]["gemini"]
+
 
 # キャプションを生成する関数
 def generate_caption(image, api_key):
